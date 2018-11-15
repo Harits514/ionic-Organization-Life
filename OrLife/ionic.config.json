@@ -1,5 +1,7 @@
 {
   "name": "OrLife",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }
