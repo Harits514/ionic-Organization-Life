@@ -1,0 +1,33 @@
+<ion-header>
+
+  <ion-navbar color="danger" text-center>
+    <ion-title>Log In</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input type="text" [(ngModel)]="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input type="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <button ion-button block (click)="goToHome()">Log In</button>
+  <br/>
+  <hr>
+  <br/>
+  <button ion-button block outline (click)="goToSignUp()">Sign Up</button>
+  <br/>
+  <button ion-button block outline (click)="goToHome()">Lupa Password?</button>
+  
+</ion-content>

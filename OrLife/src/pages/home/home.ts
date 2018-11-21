@@ -13,7 +13,10 @@ export class HomePage {
   createdCode = null;
   scannedCode = null;
  
-  constructor(private barcodeScanner: BarcodeScanner) { }
+  constructor(
+    public navCtrl: NavController,
+    private barcodeScanner: BarcodeScanner
+    ) { }
  
   createCode() {
     this.createdCode = this.qrData;
@@ -25,6 +28,10 @@ export class HomePage {
     }, (err) => {
         console.log('Error: ', err);
     });
+  }
+  
+  logOut(): void {
+    this.navCtrl.setRoot("LoginPage");
   }
 
 }
