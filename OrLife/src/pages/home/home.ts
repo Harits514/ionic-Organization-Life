@@ -36,5 +36,9 @@ export class HomePage {
         console.log('Error: ', err);
     });
   }
+  
+  logOut(): void {
+    this.navCtrl.setRoot("LoginPage");
+  }
 
 }
