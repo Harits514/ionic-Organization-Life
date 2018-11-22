@@ -17,11 +17,12 @@ export class ApiProvider {
   }
   
   getFilms() {
-      this.http.get('https://swapi.co/api/people/1')
+      return new Promise(resolve => {this.http.get('https://swapi.co/api/people/1')
       .subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
       });
-    };
+    });
+  }
 }
