@@ -1,6 +1,8 @@
+import { ApiProvider } from './../../providers/api/api';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { Observable } from 'rxjs/Observable';
  
 
 @Component({
@@ -9,17 +11,22 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 })
 export class HomePage {
 
-   qrData = null;
-  createdCode = null;
+  qrData = null;
+  createdCode : Observable<any>;
+  ay = null;
+  cobs : Observable<any>;
   scannedCode = null;
  
-  constructor(
-    public navCtrl: NavController,
-    private barcodeScanner: BarcodeScanner
-    ) { }
+  constructor(private barcodeScanner: BarcodeScanner, public apiProvider: ApiProvider, navCtrl: NavController) { 
+  }
  
   createCode() {
-    this.createdCode = this.qrData;
+    this.createdCode = this.apiProvider.getFilms()
+    .then(data => {
+      this.createdCode = data;
+      console.log(this.createdCode.name);
+    });
+    console.log(this.createdCode.name)
   }
  
   scanCode() {
