@@ -11,4 +11,34 @@ import { Observable } from 'rxjs/Observable';
 })
 export class HomePage {
 
+  qrData = null;
+  createdCode : null;
+  ay = null;
+  cobs : null;
+  scannedCode = null;
+ 
+  constructor(private barcodeScanner: BarcodeScanner, public apiProvider: ApiProvider, public navCtrl: NavController) { 
+  }
+ 
+  createCode() {
+    this.createdCode = this.apiProvider.getFilms()
+    .then(data => {
+      this.createdCode = data;
+      console.log(this.createdCode.name);
+    });
+    console.log(this.createdCode.name)
+  }
+ 
+  scanCode() {
+    this.barcodeScanner.scan().then(barcodeData => {
+      this.scannedCode = barcodeData.text;
+    }, (err) => {
+        console.log('Error: ', err);
+    });
+  }
+  
+  logOut(): void {
+    this.navCtrl.setRoot("LoginPage");
+  }
+
 }

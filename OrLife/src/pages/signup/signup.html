@@ -18,19 +18,39 @@
 
     <ion-item>
       <ion-label floating>Organisasi</ion-label>
-      <ion-input type="text" [(ngModel)]="email"></ion-input>
+      <ion-select [(ngModel)]="email">
+        <ion-option value="1">Himalkom</ion-option>
+        <ion-option value="2">Himalaya</ion-option>
+        <ion-option value="3">HimaHime</ion-option>
+        <ion-option value="4">HimApatis</ion-option>
+        <ion-option value="5">HimAktivis</ion-option>
+      </ion-select>
     </ion-item>
 
     <ion-item>
       <ion-label floating>Kabinet</ion-label>
-      <ion-input type="text" [(ngModel)]="email"></ion-input>
+      <ion-select [(ngModel)]="email">
+        <ion-option value="1">Wiki</ion-option>
+        <ion-option value="2">Pedia</ion-option>
+        <ion-option value="3">Onion</ion-option>
+        <ion-option value="4">Fox</ion-option>
+        <ion-option value="5">Chrome</ion-option>
+      </ion-select>
     </ion-item>
 
     <ion-item>
       <ion-label floating>Divisi</ion-label>
-      <ion-input type="text" [(ngModel)]="email"></ion-input>
+      <ion-select [(ngModel)]="email">
+        <ion-option value="1">Badan Pengurus Harian</ion-option>
+        <ion-option value="2">Edukasi</ion-option>
+        <ion-option value="3">Human Resource Development</ion-option>
+        <ion-option value="4">Komunikasi dan Informasi</ion-option>
+        <ion-option value="5">Eksternal</ion-option>
+        <ion-option value="5">Penanggung Jawab Komunitas</ion-option>
+        <ion-option value="5">Badan Pengawas</ion-option>
+      </ion-select>
     </ion-item>
-    
+
     <ion-item>
       <ion-label floating>Jabatan</ion-label>
       <ion-input type="text" [(ngModel)]="email"></ion-input>
