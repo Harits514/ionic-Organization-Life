@@ -17,7 +17,7 @@ export class HomePage {
   cobs : null;
   scannedCode = null;
  
-  constructor(private barcodeScanner: BarcodeScanner, public apiProvider: ApiProvider, navCtrl: NavController) { 
+  constructor(private barcodeScanner: BarcodeScanner, public apiProvider: ApiProvider, public navCtrl: NavController) { 
   }
  
   createCode() {

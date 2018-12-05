@@ -1,3 +1,4 @@
+import { ResetPage } from './../reset/reset';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
@@ -25,11 +26,11 @@ export class LoginPage {
   }
 
   goToSignUp():void {
-    this.navCtrl.push('SignupPage');
+    this.navCtrl.push(SignupPage);
   }
 
-  goToResetPassword():void {
-    this.navCtrl.push('ResetPasswordPage');
+  goToReset():void {
+    this.navCtrl.push(ResetPage);
   }
 
   goToHome():void {
