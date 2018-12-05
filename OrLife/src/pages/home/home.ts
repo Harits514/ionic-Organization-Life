@@ -12,9 +12,9 @@ import { Observable } from 'rxjs/Observable';
 export class HomePage {
 
   qrData = null;
-  createdCode : Observable<any>;
+  createdCode : null;
   ay = null;
-  cobs : Observable<any>;
+  cobs : null;
   scannedCode = null;
  
   constructor(private barcodeScanner: BarcodeScanner, public apiProvider: ApiProvider, navCtrl: NavController) { 
