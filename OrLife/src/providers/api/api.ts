@@ -38,6 +38,16 @@ export class ApiProvider {
     });
   }
 
+  getEvents() {
+      return new Promise(resolve => {this.http.get('http://localhost:8000/api/events')
+      .subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
   postSignup(id, namalengkap, NIM, organisasi, kabinet, divisi, jabatan, email, password){
     var headers = new Headers();
     headers.append("Accept", 'application/js');
@@ -45,11 +55,11 @@ export class ApiProvider {
     const requestOptions = new RequestOptions({headers: headers});
 
     var myData = {
-      id: 8,
-      name_user: "BERHASILBERHASILBERHASILHORE",
-      email_user: "email1",
-      password: "password",
-      nim_user: "NIM",
+      id: id,
+      name_user: namalengkap,
+      email_user: email,
+      password: password,
+      nim_user: NIM,
       jumlah_point: 0,
       role_id: 1,
       divisi_id: 1,

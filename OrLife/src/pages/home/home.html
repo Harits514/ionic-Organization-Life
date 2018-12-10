@@ -7,19 +7,32 @@
 </ion-header>
 
 <ion-content>
-  
+
+  <div *ngIf="ipen">
+    <div *ngFor="let ip of ipen">
+      <ion-card>
+        <ion-card-content>
+          <ion-card-title>
+            {{ip.id_event}}
+          </ion-card-title>
+          <p>
+            {{ip.nama_event}} {{ip.deskripsi_event}}
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+
   <ion-card>
-    <img src="https://scontent.fcgk9-1.fna.fbcdn.net/v/t1.0-9/47576008_2035717056466277_7312347216335601664_n.jpg?_nc_cat=110&_nc_eui2=AeH37YbuCi1EK1eW-Sr_EhfDtxA5Y8Lx1RWQJYuK1BOzX0MdkcMx01wveYgbf6uNKEDmUdkGzp2-nVtqHrcIHou8GWbCXxBcs4ohGlIosBImsA&_nc_ht=scontent.fcgk9-1.fna&oh=98ede45558c0cb3c0571f1c85ece0f7a&oe=5CA709AB"/>
+    <img src="https://scontent.fcgk9-1.fna.fbcdn.net/v/t1.0-9/47576008_2035717056466277_7312347216335601664_n.jpg?_nc_cat=110&_nc_eui2=AeH37YbuCi1EK1eW-Sr_EhfDtxA5Y8Lx1RWQJYuK1BOzX0MdkcMx01wveYgbf6uNKEDmUdkGzp2-nVtqHrcIHou8GWbCXxBcs4ohGlIosBImsA&_nc_ht=scontent.fcgk9-1.fna&oh=98ede45558c0cb3c0571f1c85ece0f7a&oe=5CA709AB"
+    />
     <ion-card-content>
       <ion-card-title>
         Nobar Saepool
-        </ion-card-title>
+      </ion-card-title>
       <p>
         Tempat: dimana
-        <br>
-        Tanggal:
-        <br>
-        Waktu:
+        <br> Tanggal:
+        <br> Waktu:
     </ion-card-content>
     <ion-row no-padding>
       <ion-col text-center>
@@ -38,17 +51,16 @@
   </ion-card>
 
   <ion-card>
-    <img src="https://scontent.fcgk9-2.fna.fbcdn.net/v/t1.0-9/47574042_2035733179797998_7554263680234291200_n.jpg?_nc_cat=101&_nc_eui2=AeH5mlNv48YZTUtvPwn3nCpQGRMctNiusJAUE9UGn0hlm3A6Zfnf8_NxEpEd8Jft-jNf-KmZB7h1W-nep0LUx-DWuhmdZE9cTcQoGlr0W_Po-A&_nc_ht=scontent.fcgk9-2.fna&oh=7d5b149b8a74a063a3f0c597d3ec4a08&oe=5CA025A4"/>
-      <ion-card-content>
-        <ion-card-title>
-          Dank Lord Recruitment
-        </ion-card-title>
-        <p>
-          Tempat: dimana
-          <br>
-          Tanggal:
-          <br>
-          Waktu:
+    <img src="https://scontent.fcgk9-2.fna.fbcdn.net/v/t1.0-9/47574042_2035733179797998_7554263680234291200_n.jpg?_nc_cat=101&_nc_eui2=AeH5mlNv48YZTUtvPwn3nCpQGRMctNiusJAUE9UGn0hlm3A6Zfnf8_NxEpEd8Jft-jNf-KmZB7h1W-nep0LUx-DWuhmdZE9cTcQoGlr0W_Po-A&_nc_ht=scontent.fcgk9-2.fna&oh=7d5b149b8a74a063a3f0c597d3ec4a08&oe=5CA025A4"
+    />
+    <ion-card-content>
+      <ion-card-title>
+        Dank Lord Recruitment
+      </ion-card-title>
+      <p>
+        Tempat: dimana
+        <br> Tanggal:
+        <br> Waktu:
     </ion-card-content>
     <ion-row no-padding>
       <ion-col text-center>
@@ -67,17 +79,16 @@
   </ion-card>
 
   <ion-card>
-    <img src="https://scontent.fcgk9-1.fna.fbcdn.net/v/t1.0-9/47574082_2035755876462395_3693152106207772672_n.jpg?_nc_cat=105&_nc_eui2=AeEwKnzaXvwb8_ly3hKNQrFf4juC8unhy0LrR5_DXe0HKwPKilYvQtOOH5N8GIbFDUCIsHtzK58lNAcJ_YAUI4KiiyTzY2eHw9cwNdjC6Lr_sQ&_nc_ht=scontent.fcgk9-1.fna&oh=040d9767cf75273c23579739a09a2d8d&oe=5C6A9638"/>
+    <img src="https://scontent.fcgk9-1.fna.fbcdn.net/v/t1.0-9/47574082_2035755876462395_3693152106207772672_n.jpg?_nc_cat=105&_nc_eui2=AeEwKnzaXvwb8_ly3hKNQrFf4juC8unhy0LrR5_DXe0HKwPKilYvQtOOH5N8GIbFDUCIsHtzK58lNAcJ_YAUI4KiiyTzY2eHw9cwNdjC6Lr_sQ&_nc_ht=scontent.fcgk9-1.fna&oh=040d9767cf75273c23579739a09a2d8d&oe=5C6A9638"
+    />
     <ion-card-content>
       <ion-card-title>
         HaWiRitsu~ LOKAL BAND
-        </ion-card-title>
+      </ion-card-title>
       <p>
         Tempat: dimana
-        <br>
-        Tanggal:
-        <br>
-        Waktu:
+        <br> Tanggal:
+        <br> Waktu:
     </ion-card-content>
     <ion-row no-padding>
       <ion-col text-center>

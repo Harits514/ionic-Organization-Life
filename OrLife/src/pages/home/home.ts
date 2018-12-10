@@ -12,12 +12,19 @@ import { Observable } from 'rxjs/Observable';
 export class HomePage {
 
   qrData = null;
-  createdCode : Promise<void>;
+  createdCode : null;
   ay = null;
   cobs : null;
   scannedCode = null;
+  ipen=null;
 
   constructor(private barcodeScanner: BarcodeScanner, public apiProvider: ApiProvider, public navCtrl: NavController) {
+    this.ay = this.apiProvider.getEvents()
+    .then(data => {
+      this.ipen = data;
+      console.log(this.ipen);
+    });
+
   }
 
   createCode() {
