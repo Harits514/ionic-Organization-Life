@@ -1,12 +1,31 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Home / Event List
-    </ion-title>
+    <div *ngIf="userData;then content else other-content"></div>
+    <ng-template #content>
+      <ion-title>
+        Home (Admin)
+      </ion-title>
+    </ng-template>
+    <ng-template #other_content>
+      <ion-title>
+        Home / Event List
+      </ion-title>
+    </ng-template>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
+
+  <div *ngIf="userData">
+    <ion-card>
+      <ion-card-content>
+        <ion-card-title>
+          {{userData.name_user}}
+        </ion-card-title>
+        email : {{userData.email_user}}
+      </ion-card-content>
+    </ion-card>
+  </div>
 
   <div *ngIf="ipen">
     <div *ngFor="let ip of ipen">

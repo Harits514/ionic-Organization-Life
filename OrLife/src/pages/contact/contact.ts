@@ -14,19 +14,41 @@ export class ContactPage {
   qrData = null;
   createdCode : null;
   ay = null;
-  cobs : null;
+  ipen = null;
+  code : null;
+  userData = null;
+  ipen_selected=null;
   scannedCode = null;
+  admin=0;
 
   constructor(private barcodeScanner: BarcodeScanner, public apiProvider: ApiProvider, public navCtrl: NavController) {
+    this.ay = this.apiProvider.getEvents()
+    .then(data => {
+      this.ipen = data.body;
+      for(let i = 0; i < this.ipen.length; i++ ){
+        this.ipen[i].showDetails=false;
+      }
+    });
+
+    this.apiProvider.getData('loginData')
+    .then(data => {
+      this.userData = data;
+      if(data.role_id==2){this.admin=1;}
+      else{this.admin=0;}
+      console.log("hey", this.userData);
+    })
   }
 
   createCode() {
-    this.createdCode = this.apiProvider.getFilms()
+    this.code=this.ipen_selected.id_event+" "+this.userData.id+" "+this.ipen_selected.date_start;
+    console.log(this.code);
+    this.createdCode = this.code;
+    /*this.createdCode = this.apiProvider.getFilms()
     .then(data => {
       this.createdCode = data;
       console.log(this.createdCode.name);
     });
-    console.log(this.createdCode.name)
+    console.log(this.createdCode.name)*/
   }
 
   scanCode() {

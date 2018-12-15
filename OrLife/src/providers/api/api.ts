@@ -1,7 +1,8 @@
-import { HttpClient} from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import { Headers,   RequestOptions  } from '@angular/http';
 
 import { Injectable } from '@angular/core';
+import { Storage } from '@ionic/storage';
 import { map,catchError } from "rxjs/operators";
 
 
@@ -14,7 +15,7 @@ import { map,catchError } from "rxjs/operators";
 @Injectable()
 export class ApiProvider {
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, public storage: Storage) {
     console.log('Hello ApiProvider Provider');
   }
 
@@ -52,11 +53,6 @@ export class ApiProvider {
   }
 
   postSignup(id, namalengkap, NIM, organisasi, kabinet, divisi, jabatan, email, password){
-    var headers = new Headers();
-    headers.append("Accept", 'application/js');
-    headers.append('Content-Type', 'application/js');
-    const requestOptions = new RequestOptions({headers: headers});
-
     var myData = {
       name_user: namalengkap,
       email_user: email,
@@ -67,17 +63,41 @@ export class ApiProvider {
       divisi_id: 1,
       kontak_id: 1
     };
-    console.log(myData);
-
-    this.http.post("http://localhost:8000/api/user", myData, requestOptions)
+    return new Promise(resolve => {this.http.post("http://localhost:8000/api/user", myData, {
+        headers: new HttpHeaders()
+            .set('Content-Type', 'application/json'),
+        observe: 'response'
+    })
       .subscribe(data => {
-        console.log("Nyampe sini");
-        console.log(myData);
-        console.log(data['_body']);
+        console.log(data);
+        resolve(data);
        }, error => {
         console.log(error);
-        console.log(data['_body']);
       });
+    });
   }
 
+  postLogin(email, password){
+    var myData = {
+      email: email,
+      password: password
+    };
+    return new Promise(resolve => {this.http.post("http://localhost:8000/api/login", myData, {
+        headers: new HttpHeaders()
+            .set('Content-Type', 'application/json'),
+        observe: 'response'
+    })
+      .subscribe(data => {
+        console.log(data.body);
+        resolve(data);
+       }, error => {
+        console.log(error);
+      });
+    });
   }
+
+  getData(key){
+    return this.storage.get(key);
+  }
+
+}

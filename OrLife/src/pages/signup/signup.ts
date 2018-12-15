@@ -36,8 +36,8 @@ export class SignupPage {
     this.kabinet=""
     this.divisi=""
     this.jabatan=""
-    this.email=""
-    this.password=""
+    this.email=null
+    this.password=null
   }
 
   ionViewDidLoad() {
@@ -51,8 +51,15 @@ export class SignupPage {
 
   goToHome():void {
     this.apiProvider.postSignup(this.id, this.namalengkap, this.NIM, this.organisasi, this.kabinet, this.divisi, this.jabatan, this.email, this.password)
-    this.navCtrl.push(TabsPage);
-    this.navCtrl.setRoot(TabsPage);
+    .then(data => {
+      console.log(data.status);
+      this.status=data.status;
+      this.apiProvider.storage.set("loginData", data.body)
+      .then(() => {
+        this.navCtrl.push(TabsPage);
+        this.navCtrl.setRoot(TabsPage);
+      });
+    });
   }
 
 }
