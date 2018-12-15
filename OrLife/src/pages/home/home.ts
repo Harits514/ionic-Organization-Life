@@ -17,14 +17,27 @@ export class HomePage {
   cobs : null;
   scannedCode = null;
   ipen=null;
+  data: Array<{title: string, details: string, icon: string, showDetails: boolean}> = [];
 
   constructor(private barcodeScanner: BarcodeScanner, public apiProvider: ApiProvider, public navCtrl: NavController) {
     this.ay = this.apiProvider.getEvents()
     .then(data => {
-      this.ipen = data;
+      this.ipen = data.body;
       console.log(this.ipen);
+      for(let i = 0; i < this.ipen.length; i++ ){
+        this.ipen[i].showDetails=false;
+      }
     });
+}
 
+  toggleDetails(ipen) {
+    if (ipen.showDetails) {
+        ipen.showDetails = false;
+        ipen.icon = 'ios-add-circle-outline';
+    } else {
+        ipen.showDetails = true;
+        ipen.icon = 'ios-remove-circle-outline';
+    }
   }
 
   createCode() {

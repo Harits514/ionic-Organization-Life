@@ -13,11 +13,32 @@
       <ion-card>
         <ion-card-content>
           <ion-card-title>
-            {{ip.id_event}}
+            {{ip.nama_event}}
           </ion-card-title>
           <p>
-            {{ip.nama_event}} {{ip.deskripsi_event}}
+            Mulai: {{ip.date_start}}
+            <br> Berakhir: {{ip.date_finish}}
         </ion-card-content>
+        <ion-row no-padding>
+          <ion-col text-center>
+            <button ion-button clear small color="danger" icon-start (click)="toggleDetails(ip)">
+              Detail Event
+              <ion-icon name="arrow-forward"></ion-icon>
+            </button>
+          </ion-col>
+          <ion-col text-center>
+            <button ion-button clear small color="danger" icon-start>
+              Share
+              <ion-icon name='share-alt'></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+        <div *ngIf="ip.showDetails">
+          <ion-row>
+            Detail: {{ip.deskripsi_event}}
+            <br>
+          </ion-row>
+        </div>
       </ion-card>
     </div>
   </div>

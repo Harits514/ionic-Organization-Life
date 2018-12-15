@@ -39,8 +39,11 @@ export class ApiProvider {
   }
 
   getEvents() {
-      return new Promise(resolve => {this.http.get('http://localhost:8000/api/events')
+      return new Promise(resolve => {this.http.get('http://localhost:8000/api/events', {
+      observe: 'response'
+   })
       .subscribe(data => {
+        console.log(data.status);
         resolve(data);
       }, err => {
         console.log(err);
@@ -55,7 +58,6 @@ export class ApiProvider {
     const requestOptions = new RequestOptions({headers: headers});
 
     var myData = {
-      id: id,
       name_user: namalengkap,
       email_user: email,
       password: password,

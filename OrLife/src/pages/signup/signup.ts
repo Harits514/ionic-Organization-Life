@@ -28,16 +28,16 @@ export class SignupPage {
   password=null
 
   constructor(public navCtrl: NavController, public apiProvider: ApiProvider, public navParams: NavParams) {
-    this.id=0
-    this.namalengkap=" "
-    this.username=" "
-    this.NIM=" "
-    this.organisasi=" "
-    this.kabinet=" "
-    this.divisi=" "
-    this.jabatan=" "
-    this.email=" "
-    this.password=" "
+    this.id="1"
+    this.namalengkap=""
+    this.username=""
+    this.NIM=""
+    this.organisasi=""
+    this.kabinet=""
+    this.divisi=""
+    this.jabatan=""
+    this.email=""
+    this.password=""
   }
 
   ionViewDidLoad() {
