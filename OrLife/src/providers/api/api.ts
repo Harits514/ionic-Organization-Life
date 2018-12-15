@@ -4,7 +4,7 @@ import { Headers,   RequestOptions  } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { map,catchError } from "rxjs/operators";
-
+import { ToastController } from 'ionic-angular';
 
 /*
   Generated class for the ApiProvider provider.
@@ -15,7 +15,7 @@ import { map,catchError } from "rxjs/operators";
 @Injectable()
 export class ApiProvider {
 
-  constructor(public http: HttpClient, public storage: Storage) {
+  constructor(public http: HttpClient, public storage: Storage, public toastCtrl: ToastController) {
     console.log('Hello ApiProvider Provider');
   }
 
@@ -82,6 +82,7 @@ export class ApiProvider {
       email: email,
       password: password
     };
+    
     return new Promise(resolve => {this.http.post("http://localhost:8000/api/login", myData, {
         headers: new HttpHeaders()
             .set('Content-Type', 'application/json'),
@@ -91,7 +92,17 @@ export class ApiProvider {
         console.log(data.body);
         resolve(data);
        }, error => {
-        console.log(error);
+        let toast = this.toastCtrl.create({
+          message: 'Email atau password salah.',
+          duration: 3000,
+          position: 'top'
+        });
+      
+        toast.onDidDismiss(() => {
+          console.log('Dismissed toast');
+        });
+      
+        toast.present();
       });
     });
   }
