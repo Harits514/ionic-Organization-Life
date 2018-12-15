@@ -1,7 +1,13 @@
 {
-  "name": "OrLife",
+  "name": "New Ionic App",
   "integrations": {
     "cordova": {}
   },
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "http://localhost:8000/api"
+    }
+  ]
 }

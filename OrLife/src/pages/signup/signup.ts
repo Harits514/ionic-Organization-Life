@@ -1,3 +1,4 @@
+import { ApiProvider } from './../../providers/api/api';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
@@ -15,8 +16,28 @@ import { TabsPage } from '../tabs/tabs';
   templateUrl: 'signup.html',
 })
 export class SignupPage {
+  id=null
+  namalengkap=null
+  username=null
+  NIM=null
+  organisasi=null
+  kabinet=null
+  divisi=null
+  jabatan=null
+  email=null
+  password=null
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public apiProvider: ApiProvider, public navParams: NavParams) {
+    this.id="1"
+    this.namalengkap=""
+    this.username=""
+    this.NIM=""
+    this.organisasi=""
+    this.kabinet=""
+    this.divisi=""
+    this.jabatan=""
+    this.email=null
+    this.password=null
   }
 
   ionViewDidLoad() {
@@ -29,8 +50,16 @@ export class SignupPage {
   }
 
   goToHome():void {
-    this.navCtrl.push(TabsPage);
-    this.navCtrl.setRoot(TabsPage);
+    this.apiProvider.postSignup(this.id, this.namalengkap, this.NIM, this.organisasi, this.kabinet, this.divisi, this.jabatan, this.email, this.password)
+    .then(data => {
+      console.log(data.status);
+      this.status=data.status;
+      this.apiProvider.storage.set("loginData", data.body)
+      .then(() => {
+        this.navCtrl.push(TabsPage);
+        this.navCtrl.setRoot(TabsPage);
+      });
+    });
   }
 
 }

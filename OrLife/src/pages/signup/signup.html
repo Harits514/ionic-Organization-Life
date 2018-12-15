@@ -6,19 +6,26 @@
 
 <ion-content padding>
   <ion-list>
+
+    <!--  <ion-item>
+      <ion-label floating>ID(Temporary)</ion-label>
+      <ion-input type="number" [(ngModel)]="id"></ion-input>
+    </ion-item>
+    -->
+
     <ion-item>
       <ion-label floating>Nama Lengkap</ion-label>
-      <ion-input type="text" [(ngModel)]="email"></ion-input>
+      <ion-input type="text" [(ngModel)]="namalengkap"></ion-input>
     </ion-item>
-    
+
     <ion-item>
       <ion-label floating>NIM</ion-label>
-      <ion-input type="text" [(ngModel)]="email"></ion-input>
+      <ion-input type="text" [(ngModel)]="NIM"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label floating>Organisasi</ion-label>
-      <ion-select [(ngModel)]="email">
+      <ion-select [(ngModel)]="organisasi">
         <ion-option value="1">Himalkom</ion-option>
         <ion-option value="2">Himalaya</ion-option>
         <ion-option value="3">HimaHime</ion-option>
@@ -29,7 +36,7 @@
 
     <ion-item>
       <ion-label floating>Kabinet</ion-label>
-      <ion-select [(ngModel)]="email">
+      <ion-select [(ngModel)]="kabinet">
         <ion-option value="1">Wiki</ion-option>
         <ion-option value="2">Pedia</ion-option>
         <ion-option value="3">Onion</ion-option>
@@ -40,7 +47,7 @@
 
     <ion-item>
       <ion-label floating>Divisi</ion-label>
-      <ion-select [(ngModel)]="email">
+      <ion-select [(ngModel)]="divisi">
         <ion-option value="1">Badan Pengurus Harian</ion-option>
         <ion-option value="2">Edukasi</ion-option>
         <ion-option value="3">Human Resource Development</ion-option>
@@ -53,12 +60,12 @@
 
     <ion-item>
       <ion-label floating>Jabatan</ion-label>
-      <ion-input type="text" [(ngModel)]="email"></ion-input>
+      <ion-input type="text" [(ngModel)]="jabatan"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label floating>Username</ion-label>
-      <ion-input type="text" [(ngModel)]="email"></ion-input>
+      <ion-input type="text" [(ngModel)]="username"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -73,5 +80,5 @@
   </ion-list>
 
   <button ion-button block (click)="goToHome()">Sign Up</button>
-  
+
 </ion-content>
