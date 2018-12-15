@@ -31,8 +31,6 @@ export class LoginPage {
     console.log("eehay");
     this.ay = this.apiProvider.getEvents()
     .then(data => {
-      console.log("hay",uhuy);
-      console.log("hay",data.body);
       this.ipen = data.body;
       for(let i = 0; i < this.ipen.length; i++ ){
         this.ipen[i].showDetails=false;
