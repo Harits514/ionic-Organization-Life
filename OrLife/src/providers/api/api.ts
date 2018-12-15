@@ -96,6 +96,25 @@ export class ApiProvider {
     });
   }
 
+  postJoinEvent(id_user, id_event){
+    var myData = {
+      id_user: id_user,
+      id_event: id_event
+    };
+    return new Promise(resolve => {this.http.post("http://localhost:8000/api/joinEvent", myData, {
+        headers: new HttpHeaders()
+            .set('Content-Type', 'application/json'),
+        observe: 'response'
+    })
+      .subscribe(data => {
+        console.log(data.body);
+        resolve(data);
+       }, error => {
+        console.log(error);
+      });
+    });
+  }
+
   getData(key){
     return this.storage.get(key);
   }

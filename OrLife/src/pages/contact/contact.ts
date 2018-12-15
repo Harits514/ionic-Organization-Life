@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Observable } from 'rxjs/Observable';
+import { ToastController } from 'ionic-angular';
+
 
 
 @Component({
@@ -11,6 +13,13 @@ import { Observable } from 'rxjs/Observable';
 })
 export class ContactPage {
 
+  toast_c=null;
+  toast_s=null;
+  toast_f=null;
+  splitted = null;
+  ev_id= null;
+  ad_id= null;
+  status=null;
   qrData = null;
   createdCode : null;
   ay = null;
@@ -21,7 +30,7 @@ export class ContactPage {
   scannedCode = null;
   admin=0;
 
-  constructor(private barcodeScanner: BarcodeScanner, public apiProvider: ApiProvider, public navCtrl: NavController) {
+  constructor(private barcodeScanner: BarcodeScanner, public apiProvider: ApiProvider, public navCtrl: NavController, public toastCtrl: ToastController) {
     this.ay = this.apiProvider.getEvents()
     .then(data => {
       this.ipen = data.body;
@@ -36,13 +45,50 @@ export class ContactPage {
       if(data.role_id==2){this.admin=1;}
       else{this.admin=0;}
       console.log("hey", this.userData);
-    })
+    });
   }
+
+  presentToastC(){
+    this.toast_c = this.toastCtrl.create({
+      message: 'Created successfully',
+      duration: 3000,
+      position: 'top'
+    });
+    this.toast_c.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+    this.toast_c.present();
+};
+
+presentToastS(){
+  this.toast_s = this.toastCtrl.create({
+    message: 'Scanned successfully',
+    duration: 3000,
+    position: 'top'
+  });
+  this.toast_s.onDidDismiss(() => {
+    console.log('Dismissed toast');
+  });
+  this.toast_s.present();
+};
+
+presentToastF(){
+  this.toast_f = this.toastCtrl.create({
+    message: 'Scanning failed',
+    duration: 3000,
+    position: 'top'
+  });
+  this.toast_f.onDidDismiss(() => {
+    console.log('Dismissed toast');
+  });
+  this.toast_f.present();
+};
 
   createCode() {
     this.code=this.ipen_selected.id_event+" "+this.userData.id+" "+this.ipen_selected.date_start;
     console.log(this.code);
     this.createdCode = this.code;
+    this.presentToastC();
     /*this.createdCode = this.apiProvider.getFilms()
     .then(data => {
       this.createdCode = data;
@@ -54,6 +100,21 @@ export class ContactPage {
   scanCode() {
     this.barcodeScanner.scan().then(barcodeData => {
       this.scannedCode = barcodeData.text;
+      this.splitted = this.scanCode.split(" ");
+      this.ev_id=splitted[0];
+      this.ad_id=splitted[1];
+      this.apiProvider.postJoinEvent(this.ad_id, this.ev_id)
+      .then(data => {
+        console.log(data.status);
+        this.status=data.status;
+        if(this.status==201){
+          this.presentToastS();
+        }
+        else{
+          this.presentToastF();
+        }
+      });
+
     }, (err) => {
         console.log('Error: ', err);
     });

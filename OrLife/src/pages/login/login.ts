@@ -4,7 +4,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
 import { SignupPage } from '../signup/signup';
-import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the LoginPage page.
@@ -19,6 +18,8 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'login.html',
 })
 export class LoginPage {
+  ay = null;
+  ipen=null;
   id=null
   email=null
   password=null
@@ -27,10 +28,16 @@ export class LoginPage {
   constructor(public navCtrl: NavController, public apiProvider: ApiProvider, public navParams: NavParams) {
     this.email=""
     this.password=""
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+    console.log("eehay");
+    this.ay = this.apiProvider.getEvents()
+    .then(data => {
+      console.log("hay",uhuy);
+      console.log("hay",data.body);
+      this.ipen = data.body;
+      for(let i = 0; i < this.ipen.length; i++ ){
+        this.ipen[i].showDetails=false;
+      }
+    });
   }
 
   goToSignUp():void {
