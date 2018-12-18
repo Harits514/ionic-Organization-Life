@@ -127,7 +127,7 @@ presentToastF(){
         console.log(data.status);
 
         this.status=data.status;
-        
+
         if(this.status==200){
           this.presentToastS();
         }

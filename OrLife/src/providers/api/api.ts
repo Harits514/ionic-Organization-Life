@@ -19,7 +19,7 @@ export class ApiProvider {
 
   constructor(public http: HttpClient, public storage: Storage, public toastCtrl: ToastController) {
     console.log('Hello ApiProvider Provider');
-    this.link="http://192.168.43.169:8000";
+    this.link="http://localhost:8000";
     /*http://192.168.43.169:8000*/
   }
 
@@ -56,8 +56,9 @@ export class ApiProvider {
     });
   }
 
-  getEventHistory() {
-      return new Promise(resolve => {this.http.get(this.link+'/api/userEventHistory/{id}', {
+  getEventHistory(id_user) {
+    console.log(this.link+'/api/userEventHistory/'+id_user);
+      return new Promise(resolve => {this.http.get(this.link+'/api/userEventHistory/'+id_user, {
         observe: 'response'
      })
      .subscribe(data => {
