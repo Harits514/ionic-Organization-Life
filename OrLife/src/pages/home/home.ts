@@ -33,8 +33,9 @@ export class HomePage {
     .then(data => {
       this.userData = data;
       /*cek admin bukan*/
-      if(this.userData.role_id==2){this.admin=1;}
+      if(this.userData.role_id==1 || this.userData.role_id==2){this.admin=1;}
       else{this.admin=0;}
+      console.log("admin?", this.admin)
     })
 
 }

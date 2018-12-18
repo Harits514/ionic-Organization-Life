@@ -16,6 +16,7 @@ export class ContactPage {
   toast_c=null;
   toast_s=null;
   toast_f=null;
+  toast_g=null;
   splitted = null;
   ev_id= null;
   ad_id= null;
@@ -42,11 +43,23 @@ export class ContactPage {
     this.apiProvider.getData('loginData')
     .then(data => {
       this.userData = data;
-      if(data.role_id==2){this.admin=1;}
+      if(data.role_id==1 || data.role_id==2){this.admin=1;}
       else{this.admin=0;}
       console.log("hey", this.userData);
     });
   }
+
+  presentToastG(){
+    this.toast_g = this.toastCtrl.create({
+      message: 'pilih event dulu',
+      duration: 3000,
+      position: 'top'
+    });
+    this.toast_g.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+    this.toast_g.present();
+};
 
   presentToastC(){
     this.toast_c = this.toastCtrl.create({
@@ -85,10 +98,15 @@ presentToastF(){
 };
 
   createCode() {
-    this.code=this.ipen_selected.id_event+" "+this.userData.id+" "+this.ipen_selected.date_start;
+    if(this.ipen_selected){
+    this.code=this.ipen_selected.id_event+" "+this.userData.id+" "+this.ipen_selected.time_start;
     console.log(this.code);
     this.createdCode = this.code;
     this.presentToastC();
+  }
+   else{
+     this.presentToastG();
+   }
     /*this.createdCode = this.apiProvider.getFilms()
     .then(data => {
       this.createdCode = data;
@@ -100,21 +118,23 @@ presentToastF(){
   scanCode() {
     this.barcodeScanner.scan().then(barcodeData => {
       this.scannedCode = barcodeData.text;
-      this.splitted = this.scanCode.split(" ");
-      this.ev_id=splitted[0];
-      this.ad_id=splitted[1];
-      this.apiProvider.postJoinEvent(this.ad_id, this.ev_id)
+      this.splitted = this.scannedCode.toString();
+      this.splitted = this.splitted.split(" ");
+      this.ev_id=this.splitted[0];
+      this.ad_id=this.splitted[1];
+      this.apiProvider.postJoinEvent(this.userData.id, this.ev_id)
       .then(data => {
         console.log(data.status);
+
         this.status=data.status;
-        if(this.status==201){
+        
+        if(this.status==200){
           this.presentToastS();
         }
         else{
           this.presentToastF();
         }
       });
-
     }, (err) => {
         console.log('Error: ', err);
     });

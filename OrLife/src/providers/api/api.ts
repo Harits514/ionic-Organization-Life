@@ -15,8 +15,12 @@ import { ToastController } from 'ionic-angular';
 @Injectable()
 export class ApiProvider {
 
+  link="";
+
   constructor(public http: HttpClient, public storage: Storage, public toastCtrl: ToastController) {
     console.log('Hello ApiProvider Provider');
+    this.link="http://192.168.43.169:8000";
+    /*http://192.168.43.169:8000*/
   }
 
   getFilms() {
@@ -40,7 +44,7 @@ export class ApiProvider {
   }
 
   getEvents() {
-      return new Promise(resolve => {this.http.get('http://localhost:8000/api/events', {
+      return new Promise(resolve => {this.http.get(this.link+'/api/events', {
       observe: 'response'
    })
       .subscribe(data => {
@@ -53,7 +57,7 @@ export class ApiProvider {
   }
 
   getEventHistory() {
-      return new Promise(resolve => {this.http.get('http://localhost:8000/api/userEventHistory/{id}', {
+      return new Promise(resolve => {this.http.get(this.link+'/api/userEventHistory/{id}', {
         observe: 'response'
      })
      .subscribe(data => {
@@ -64,7 +68,7 @@ export class ApiProvider {
       });
     });
   }
-  
+
   postSignup(id, namalengkap, NIM, organisasi, kabinet, divisi, jabatan, email, password){
     var myData = {
       name_user: namalengkap,
@@ -72,11 +76,11 @@ export class ApiProvider {
       password: password,
       nim_user: NIM,
       jumlah_point: 0,
-      role_id: 1,
+      role_id: 4,
       divisi_id: 1,
       kontak_id: 1
     };
-    return new Promise(resolve => {this.http.post("http://localhost:8000/api/user", myData, {
+    return new Promise(resolve => {this.http.post(this.link+"/api/user", myData, {
         headers: new HttpHeaders()
             .set('Content-Type', 'application/json'),
         observe: 'response'
@@ -95,8 +99,8 @@ export class ApiProvider {
       email: email,
       password: password
     };
-    
-    return new Promise(resolve => {this.http.post("http://localhost:8000/api/login", myData, {
+
+    return new Promise(resolve => {this.http.post(this.link+"/api/login", myData, {
         headers: new HttpHeaders()
             .set('Content-Type', 'application/json'),
         observe: 'response'
@@ -110,11 +114,11 @@ export class ApiProvider {
           duration: 3000,
           position: 'top'
         });
-      
+
         toast.onDidDismiss(() => {
           console.log('Dismissed toast');
         });
-      
+
         toast.present();
       });
     });
@@ -125,7 +129,7 @@ export class ApiProvider {
       id_user: id_user,
       id_event: id_event
     };
-    return new Promise(resolve => {this.http.post("http://localhost:8000/api/joinEvent", myData, {
+    return new Promise(resolve => {this.http.post(this.link+"/api/joinEvent", myData, {
         headers: new HttpHeaders()
             .set('Content-Type', 'application/json'),
         observe: 'response'

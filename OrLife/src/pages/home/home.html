@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <div *ngIf="userData;then content else other-content"></div>
+    <div *ngIf="admin;then content else other_content"></div>
     <ng-template #content>
       <ion-title>
         Home (Admin)
