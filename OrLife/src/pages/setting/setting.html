@@ -26,10 +26,15 @@
     Divisi : {{userData.divisi_id}}
     <br>
     Poin   : {{userData.jumlah_point}}
-  </div>
-  <div>
-    <button ion-buttons (click)="goToEventHistoryPage()">
+    <br>
+    <hr>
+    
+    <button ion-button block outline (click)="goToEventHistoryPage()">
       Event History
+    </button>
+
+    <button ion-button block outline (click)="goToEventHistoryPage()">
+      <ion-icon name="star-outline"></ion-icon>Event History
     </button>
   </div>
 </ion-content>
