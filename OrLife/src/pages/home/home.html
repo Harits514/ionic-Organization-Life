@@ -8,25 +8,13 @@
     </ng-template>
     <ng-template #other_content>
       <ion-title>
-        Home / Event List
+        Home
       </ion-title>
     </ng-template>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-
-  <div *ngIf="userData">
-    <ion-card>
-      <ion-card-content>
-        <ion-card-title>
-          {{userData.name_user}}
-        </ion-card-title>
-        email : {{userData.email_user}}
-      </ion-card-content>
-    </ion-card>
-  </div>
-
   <div *ngIf="ipen">
     <div *ngFor="let ip of ipen">
       <ion-card>

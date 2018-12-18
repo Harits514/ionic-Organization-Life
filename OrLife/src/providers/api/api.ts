@@ -52,6 +52,19 @@ export class ApiProvider {
     });
   }
 
+  getEventHistory() {
+      return new Promise(resolve => {this.http.get('http://localhost:8000/api/userEventHistory/{id}', {
+        observe: 'response'
+     })
+     .subscribe(data => {
+       console.log(data.status);
+       resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+  
   postSignup(id, namalengkap, NIM, organisasi, kabinet, divisi, jabatan, email, password){
     var myData = {
       name_user: namalengkap,

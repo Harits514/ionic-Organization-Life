@@ -12,6 +12,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from './../pages/signup/signup';
 import { ResetPage } from '../pages/reset/reset';
+import { SettingPage } from '../pages/setting/setting';
+import { EventhistoryPage } from '../pages/eventhistory/eventhistory';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -30,7 +32,9 @@ import { ApiProvider } from '../providers/api/api';
     TabsPage,
     LoginPage,
     SignupPage,
-    ResetPage
+    ResetPage,
+    SettingPage,
+    EventhistoryPage
   ],
   imports: [
     BrowserModule,
@@ -50,7 +54,9 @@ import { ApiProvider } from '../providers/api/api';
     TabsPage,
     LoginPage,
     SignupPage,
-    ResetPage
+    ResetPage,
+    SettingPage,
+    EventhistoryPage
   ],
   providers: [
     StatusBar,
