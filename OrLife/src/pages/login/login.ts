@@ -11,17 +11,6 @@ import { SignupPage } from '../signup/signup';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  slides = [
-    {
-      title: "Log In",
-    },
-    {
-      title: "Sign Up",
-    },
-    {
-      title: "Reset",
-    }
-  ];
   ay = null;
   ipen=null;
   id=null;
