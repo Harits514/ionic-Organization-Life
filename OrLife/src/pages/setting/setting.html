@@ -16,25 +16,20 @@
 </ion-header>
 
 <ion-content padding>
-  <div *ngIf="userData">
-    Nama   : {{userData.name_user}}
-    <br>
-    NIM    : {{userData.nim_user}}
-    <br>
-    Email  : {{userData.email_user}}
-    <br>
-    Divisi : {{userData.divisi_id}}
-    <br>
-    Poin   : {{userData.jumlah_point}}
-    <br>
+  <ion-title>Informasi Pengguna</ion-title>
+  <hr>
+<div *ngIf="userData">
+  <pre>Nama   : {{userData.name_user}}</pre>
+    <pre>NIM    : {{userData.nim_user}}</pre>
+    <pre>Email  : {{userData.email_user}}</pre>
+    <pre>Divisi : {{userData.divisi_id}}</pre>
+    <pre>Poin   : {{userData.jumlah_point}}</pre>
     <hr>
-    
+    <button ion-button block outline (click)="goToEventHistoryPage()">
+      Update Informasi<pre> </pre><ion-icon name="create"></ion-icon>
+    </button>
     <button ion-button block outline (click)="goToEventHistoryPage()">
       Event History
-    </button>
-
-    <button ion-button block outline (click)="goToEventHistoryPage()">
-      <ion-icon name="star-outline"></ion-icon>Event History
     </button>
   </div>
 </ion-content>

@@ -1,9 +1,19 @@
 import { ResetPage } from './../reset/reset';
 import { ApiProvider } from './../../providers/api/api';
-import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Slide } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
 import { SignupPage } from '../signup/signup';
+import { ViewChild } from '@angular/core';
+import { Slides } from 'ionic-angular';
+
+
+/**
+ * Generated class for the LoginPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
 
 @IonicPage()
 @Component({
@@ -11,41 +21,16 @@ import { SignupPage } from '../signup/signup';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  slides = [
-    {
-      title: "Log In",
-    },
-    {
-      title: "Sign Up",
-    },
-    {
-      title: "Reset",
-    }
-  ];
   ay = null;
   ipen=null;
-  id=null;
-  namalengkap=null;
-  username=null;
-  NIM=null;
-  organisasi=null;
-  kabinet=null;
-  divisi=null;
-  jabatan=null;
-  email=null;
+  id=null
+  email=null
   password=null
+  status=null
 
   constructor(public navCtrl: NavController, public apiProvider: ApiProvider, public navParams: NavParams) {
-    this.id="1"
-    this.namalengkap=""
-    this.username=""
-    this.NIM=""
-    this.organisasi=""
-    this.kabinet=""
-    this.divisi=""
-    this.jabatan=""
-    this.email=null
-    this.password=null
+    this.email=""
+    this.password=""
     console.log("eehay");
     this.ay = this.apiProvider.getEvents()
     .then(data => {
@@ -56,10 +41,6 @@ export class LoginPage {
     });
   }
 
-  next(slide, index) {
-    slide.slider.slideTo(index, 2000)
-  }
-
   goToSignUp():void {
     this.navCtrl.push(SignupPage);
   }
@@ -68,7 +49,7 @@ export class LoginPage {
     this.navCtrl.push(ResetPage);
   }
 
-  logIn():void {
+  goToHome():void {
     this.apiProvider.postLogin(this.email, this.password)
     .then(data => {
       console.log(data.status);
@@ -80,17 +61,5 @@ export class LoginPage {
       });
     });
   }
-  
-  signUp():void {
-    this.apiProvider.postSignup(this.id, this.namalengkap, this.NIM, this.organisasi, this.kabinet, this.divisi, this.jabatan, this.email, this.password)
-    .then(data => {
-      console.log(data.status);
-      this.status=data.status;
-      this.apiProvider.storage.set("loginData", data.body)
-      .then(() => {
-        this.navCtrl.push(TabsPage);
-        this.navCtrl.setRoot(TabsPage);
-      });
-    });
-  }
+
 }
