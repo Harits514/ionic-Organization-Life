@@ -1,7 +1,7 @@
 import { ResetPage } from './../reset/reset';
 import { ApiProvider } from './../../providers/api/api';
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Slide } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
 import { SignupPage } from '../signup/signup';
 
@@ -11,7 +11,7 @@ import { SignupPage } from '../signup/signup';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  slides = [
+  /*slides = [
     {
       title: "Log In",
     },
@@ -21,7 +21,8 @@ export class LoginPage {
     {
       title: "Reset",
     }
-  ];
+  ];*/
+  @ViewChild(Slides) slides: Slides;
   ay = null;
   ipen=null;
   id=null;
@@ -46,18 +47,17 @@ export class LoginPage {
     this.jabatan=""
     this.email=null
     this.password=null
-    console.log("eehay");
-    this.ay = this.apiProvider.getEvents()
-    .then(data => {
-      this.ipen = data.body;
-      for(let i = 0; i < this.ipen.length; i++ ){
-        this.ipen[i].showDetails=false;
-      }
-    });
+    console.log(this.slides);
   }
 
+
+
   next(slide, index) {
-    slide.slider.slideTo(index, 2000)
+    this.slides.slideTo(2, 2000)
+  }
+
+  goToSlide2() {
+    this.slides.slideTo(2, 500);
   }
 
   goToSignUp():void {
@@ -80,7 +80,7 @@ export class LoginPage {
       });
     });
   }
-  
+
   signUp():void {
     this.apiProvider.postSignup(this.id, this.namalengkap, this.NIM, this.organisasi, this.kabinet, this.divisi, this.jabatan, this.email, this.password)
     .then(data => {
