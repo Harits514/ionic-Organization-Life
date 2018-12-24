@@ -1,11 +1,5 @@
-<!--
-  Generated template for the SettingPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="danger">
     <div *ngIf="userData;then content else other-content"></div>
     <ng-template #content>
       <ion-title>Settings</ion-title>
@@ -15,21 +9,20 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-title>Informasi Pengguna</ion-title>
-  <hr>
-<div *ngIf="userData">
-  <pre>Nama   : {{userData.name_user}}</pre>
-    <pre>NIM    : {{userData.nim_user}}</pre>
-    <pre>Email  : {{userData.email_user}}</pre>
-    <pre>Divisi : {{userData.divisi_id}}</pre>
-    <pre>Poin   : {{userData.jumlah_point}}</pre>
+<ion-content padding class="background">
+  <ion-item>
+    <ion-title>Informasi Pengguna</ion-title>
     <hr>
-    <button ion-button block outline (click)="goToEventHistoryPage()">
-      Update Informasi<pre> </pre><ion-icon name="create"></ion-icon>
-    </button>
-    <button ion-button block outline (click)="goToEventHistoryPage()">
-      Event History
-    </button>
-  </div>
+    <div *ngIf="userData">
+      <pre>Nama   : {{userData.name_user}}</pre>
+      <pre>NIM    : {{userData.nim_user}}</pre>
+      <pre>Email  : {{userData.email_user}}</pre>
+      <pre>Divisi : {{userData.divisi_id}}</pre>
+      <pre>Poin   : {{userData.jumlah_point}}</pre>
+      <hr>
+      <button ion-button block outline (click)="goToEventHistoryPage()">
+        Event History
+      </button>
+    </div>
+  </ion-item>>
 </ion-content>

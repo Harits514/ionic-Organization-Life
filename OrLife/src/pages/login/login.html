@@ -1,9 +1,9 @@
-<ion-content padding class="background" has-bouncing="false" padding="true" has-tabs="true" has-header="true">
+<ion-content padding class="loginbackground" has-bouncing="false" padding="true" has-tabs="true" has-header="true" style="overflow: hidden;">
   <img padding alt="logo" width="auto" height="auto" src="../assets/imgs/logo.svg">
   <ion-slides padding pager>
-    <ion-slide padding>
-      <br>
-      <br>
+    <ion-slide padding style="overflow:auto;">
+      <br/>
+      <br/>
       <ion-list>
         <ion-item class="login-input">
           <ion-input text-center type="text" [(ngModel)]="email" placeholder="Email"></ion-input>
@@ -13,15 +13,15 @@
           <ion-input text-center type="password" [(ngModel)]="password" placeholder="Password"></ion-input>
         </ion-item>
       </ion-list>
-      <hr>
+      <hr/>
       <button ion-button color="danger" block (click)="logIn()">Log In</button>
-      <hr>
       <br/>
-      <button ion-button color="light" block outline (click)="goToSlide2()">Sign Up</button>
+      <button ion-button color="light" block outline (click)="goToSlide1()">Sign Up</button>
       <br/>
-      <button ion-button color="light" block outline (click)="goToReset()">Lupa Password?</button>
+      <button ion-button color="light" block outline (click)="goToSlide2()">Lupa Password?</button>
     </ion-slide>
-    <ion-slide padding>
+    
+    <ion-slide padding style="overflow:auto;">
       <br>
       <br>
       <ion-list class="login-input">
@@ -72,6 +72,26 @@
       </ion-list>
       <hr>
       <button ion-button color="danger" block (click)="signUp()">Sign Up</button>
+      <br/>
+      <button ion-button color="light" block outline (click)="goToSlide0()">Log In</button>
+      <br/>
+      <button ion-button color="light" block outline (click)="goToSlide2()">Reset Password</button>
+    </ion-slide>
+
+    <ion-slide padding style="overflow:auto;">
+      <br/>
+      <br/>
+      <ion-list>
+        <ion-item class="login-input">
+          <ion-input text-center type="email" [(ngModel)]="email" placeholder="Email"></ion-input>
+        </ion-item>
+      </ion-list>
+      <hr>
+      <button ion-button color="danger" block (click)="presentToast()">Send Confirmation Email</button>
+      <br/>
+      <button ion-button color="light" block outline (click)="goToSlide0()">Log In</button>
+      <br/>
+      <button ion-button color="light" block outline (click)="goToSlide1()">Sign Up</button>
     </ion-slide>
   </ion-slides>
 </ion-content>

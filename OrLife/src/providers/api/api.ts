@@ -56,6 +56,19 @@ export class ApiProvider {
     });
   }
 
+  getRewards() {
+    return new Promise(resolve => {this.http.get(this.link+'/api/reward', {
+    observe: 'response'
+ })
+    .subscribe(data => {
+      console.log(data.status);
+      resolve(data);
+    }, err => {
+      console.log(err);
+    });
+  });
+}
+  
   getEventHistory(id_user) {
     console.log(this.link+'/api/userEventHistory/'+id_user);
       return new Promise(resolve => {this.http.get(this.link+'/api/userEventHistory/'+id_user, {

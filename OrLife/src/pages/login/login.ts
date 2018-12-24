@@ -1,9 +1,7 @@
-import { ResetPage } from './../reset/reset';
 import { ApiProvider } from './../../providers/api/api';
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Slides, Content, Toast, ToastController } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
-import { SignupPage } from '../signup/signup';
 
 @IonicPage()
 @Component({
@@ -11,17 +9,6 @@ import { SignupPage } from '../signup/signup';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  /*slides = [
-    {
-      title: "Log In",
-    },
-    {
-      title: "Sign Up",
-    },
-    {
-      title: "Reset",
-    }
-  ];*/
   @ViewChild(Slides) slides: Slides;
   ay = null;
   ipen=null;
@@ -36,7 +23,7 @@ export class LoginPage {
   email=null;
   password=null
 
-  constructor(public navCtrl: NavController, public apiProvider: ApiProvider, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public apiProvider: ApiProvider, public navParams: NavParams, public toastCtrl: ToastController) {
     this.id="1"
     this.namalengkap=""
     this.username=""
@@ -51,21 +38,16 @@ export class LoginPage {
   }
 
 
+  goToSlide0() {
+    this.slides.slideTo(0, 500);
+  }
 
-  next(slide, index) {
-    this.slides.slideTo(2, 2000)
+  goToSlide1() {
+    this.slides.slideTo(1, 500);
   }
 
   goToSlide2() {
     this.slides.slideTo(2, 500);
-  }
-
-  goToSignUp():void {
-    this.navCtrl.push(SignupPage);
-  }
-
-  goToReset():void {
-    this.navCtrl.push(ResetPage);
   }
 
   logIn():void {
@@ -92,5 +74,19 @@ export class LoginPage {
         this.navCtrl.setRoot(TabsPage);
       });
     });
+  }
+
+  presentToast() {
+    let toast = this.toastCtrl.create({
+      message: 'Email konfirmasi telah dikirim!',
+      duration: 3000,
+      position: 'top'
+    });
+  
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+  
+    toast.present();
   }
 }

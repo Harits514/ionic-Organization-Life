@@ -1,13 +1,13 @@
 import { ApiProvider } from './../../providers/api/api';
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, IonicPage } from 'ionic-angular';
 
-
+@IonicPage()
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-reward',
+  templateUrl: 'reward.html',
 })
-export class HomePage {
+export class RewardPage {
 
   qrData = null;
   createdCode : null;
@@ -35,7 +35,6 @@ export class HomePage {
       else{this.admin=0;}
       console.log("admin?", this.admin)
     })
-
 }
 
   toggleDetails(ipen) {

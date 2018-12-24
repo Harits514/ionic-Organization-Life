@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { AboutPage } from '../about/about';
+import { RewardPage } from './../reward/reward';
 import { ContactPage } from '../contact/contact';
 import { HomePage } from '../home/home';
 import { SettingPage } from '../setting/setting';
@@ -11,7 +11,7 @@ import { SettingPage } from '../setting/setting';
 export class TabsPage {
 
   tab1Root = HomePage;
-  tab2Root = AboutPage;
+  tab2Root = RewardPage;
   tab3Root = ContactPage;
   tab4Root = SettingPage;
 

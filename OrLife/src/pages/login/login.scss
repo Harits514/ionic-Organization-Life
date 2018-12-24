@@ -4,9 +4,10 @@ page-login {
     .logoHeader {
       text-align: center !important;
       margin-top: 10% !important;
-      font-family: 'Montserrat-Regular', 'Montserrat';
+      font-family: "Montserrat-Regular", "Montserrat";
+      src: href('https://fonts.googleapis.com/css?family=Montserrat:400,700');
     }
-    .background
+    .loginbackground
     {
         background: url('../../assets/imgs/backgroundimg.png') no-repeat fixed center;
         background-size: cover;
