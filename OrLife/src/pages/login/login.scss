@@ -7,11 +7,13 @@ page-login {
       font-family: "Montserrat-Regular", "Montserrat";
       src: href('https://fonts.googleapis.com/css?family=Montserrat:400,700');
     }
+
     .loginbackground
     {
         background: url('../../assets/imgs/backgroundimg.png') no-repeat fixed center;
         background-size: cover;
     }
+
     .login-input
     {
         opacity:0.777;
@@ -21,6 +23,11 @@ page-login {
         -moz-border-radius: 66px;
         border-radius: 66px;
     }
+
+    .select{
+        max-width: 100% !important;
+    }
+
     .button
     {
         text-align: center;
@@ -28,9 +35,11 @@ page-login {
         -moz-border-radius: 66px;
         border-radius: 66px;
     }
+
     ion-slide.swiper-slide {
         align-items: flex-start;
     }
+
     div.swiper-pagination {
         top:0px;
         bottom:inherit;

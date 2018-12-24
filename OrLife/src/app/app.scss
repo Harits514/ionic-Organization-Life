@@ -18,7 +18,12 @@ $font-family-base: "Montserrat-Regular", "Montserrat" !default;
 
 .background
 {
-    background-color: rgba(0, 0, 0, 0.055);
+    background-color: gainsboro;
+}
+
+.title
+{
+    text-align: center;
 }
 
 ::-webkit-scrollbar, *::-webkit-scrollbar { display: none; }

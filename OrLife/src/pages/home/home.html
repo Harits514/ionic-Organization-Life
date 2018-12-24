@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar color="danger">
+  <ion-navbar color="danger" hide-on-scroll="true">
     <div *ngIf="admin;then content else other_content"></div>
     <ng-template #content>
       <ion-title>
@@ -14,33 +14,25 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="background">
-  <div *ngIf="ipen">
-    <div *ngFor="let ip of ipen">
+<ion-content class="background">
+  <div *ngIf="ipen" padding>
+    <div *ngFor="let ip of ipen" padding-bottom>
       <ion-card>
         <ion-card-content>
           <ion-card-title>
             {{ip.nama_event}}
           </ion-card-title>
-          <pre>Lokasi : {{ip.tempat}}</pre>
-          <pre>Dimulai saat : {{ip.time_start}}</pre>
-          <pre>Berakhir saat : {{ip.time_finish}}</pre>
+          <pre>Lokasi   : {{ip.tempat}}</pre>
+          <pre>Dimulai  : {{ip.time_start}}</pre>
+          <pre>Berakhir : {{ip.time_finish}}</pre>
           <hr/>
         </ion-card-content>
-        <ion-row no-padding>
-          <ion-col text-center>
-            <button ion-button clear small color="danger" icon-start (click)="toggleDetails(ip)">
-              Detail Event
-              <ion-icon name="arrow-forward"></ion-icon>
-            </button>
-          </ion-col>
-          <ion-col text-center>
-            <button ion-button clear small color="danger" icon-start>
-              Share
-              <ion-icon name='share-alt'></ion-icon>
-            </button>
-          </ion-col>
-        </ion-row>
+        <div padding-right padding-left padding-bottom> 
+          <button ion-button block color="danger" icon-start (click)="toggleDetails(ip)">
+          Detail Event<pre> </pre>
+          <ion-icon name="arrow-forward"></ion-icon>
+        </button>
+      </div>
         <div *ngIf="ip.showDetails">
           <ion-row>
             Detail: {{ip.deskripsi_event}}

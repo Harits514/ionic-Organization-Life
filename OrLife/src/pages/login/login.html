@@ -32,6 +32,7 @@
           <ion-input text-center type="text" [(ngModel)]="NIM" placeholder="NIM"></ion-input>
         </ion-item>
         <ion-item>
+          <ion-label>Organisasi</ion-label>
           <ion-select text-center [(ngModel)]="organisasi" placeholder="Organisasi">
             <ion-option value="1">Himalkom</ion-option>
             <ion-option value="2">Himalaya</ion-option>
@@ -41,6 +42,7 @@
           </ion-select>
         </ion-item>
         <ion-item>
+          <ion-label>Kabinet</ion-label>
           <ion-select text-center [(ngModel)]="kabinet" placeholder="Kabinet">
             <ion-option value="1">Wiki</ion-option>
             <ion-option value="2">Pedia</ion-option>
@@ -50,7 +52,8 @@
           </ion-select>
         </ion-item>
         <ion-item>
-          <ion-select text-center [(ngModel)]="divisi" placeholder="Divisi">
+          <ion-label>Divisi</ion-label>
+          <ion-select padding-none text-center [(ngModel)]="divisi" placeholder="Divisi">
             <ion-option value="1">Badan Pengurus Harian</ion-option>
             <ion-option value="2">Edukasi</ion-option>
             <ion-option value="3">Human Resource Development</ion-option>
