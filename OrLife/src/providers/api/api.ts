@@ -23,8 +23,5 @@ export class ApiProvider {
       }, err => {
         console.log(err);
       });
-    });
-  
-  }
-
+    };
 }

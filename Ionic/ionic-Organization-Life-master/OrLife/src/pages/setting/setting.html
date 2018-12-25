@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar color="danger">
+    <div *ngIf="userData;then content else other-content"></div>
+    <ng-template #content>
+      <ion-title>Settings</ion-title>
+    </ng-template>
+    <ng-template #other_content>
+    </ng-template>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="background">
+  <ion-item>
+    <ion-title>Informasi Pengguna</ion-title>
+    <hr>
+    <div *ngIf="userData">
+      <pre>Nama   : {{userData.name_user}}</pre>
+      <pre>NIM    : {{userData.nim_user}}</pre>
+      <pre>Email  : {{userData.email_user}}</pre>
+      <pre>Divisi : {{userData.divisi_id}}</pre>
+      <pre>Poin   : {{userData.jumlah_point}}</pre>
+      <hr>
+      <button ion-button color="danger" block (click)="goToEventHistoryPage()">
+        Event History
+      </button>
+    </div>
+  </ion-item>
+</ion-content>

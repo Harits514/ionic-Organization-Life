@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar color="danger">
+    <div *ngIf="admin;then content else other_content"></div>
+    <ng-template #content>
+      <ion-title>
+        Reward List (Admin)
+      </ion-title>
+    </ng-template>
+    <ng-template #other_content>
+      <ion-title>
+        Reward List
+      </ion-title>
+    </ng-template>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="background">
+  <div *ngIf="rewards" padding>
+    <div *ngFor="let ip of rewards" padding-bottom>
+      <ion-card>
+        <ion-card-content>
+          <ion-card-title>
+            {{ip.nama_reward}}
+          </ion-card-title>
+          <pre>Poin Harga : {{ip.points_reward}}</pre>
+          <pre>Persediaan : {{ip.quantity_reward}}</pre>
+          <pre>Deskripsi  :</pre>
+          <br/> {{ip.deskripsi_reward}}
+          <hr/>
+        </ion-card-content>
+        <div padding-right padding-left padding-bottom>
+          <button ion-button block color="secondary" icon-start icon-start (click)="tukarReward(ip)">
+              Redeem<pre> </pre>
+              <ion-icon name="arrow-forward"></ion-icon>
+            </button>
+        </div>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>

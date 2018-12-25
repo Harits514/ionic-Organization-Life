@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar color="danger">
+    <ion-title>QR Code</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="background">
+  <!--<ion-item>
+    <ion-input type="text" placeholder="MY QR Code data" [(ngModel)]="qrData">
+    </ion-input>
+  </ion-item>-->
+  <div padding>
+  <ion-item>
+    <div *ngIf="admin" padding>
+      <ion-item>
+        <ion-label>Select Event</ion-label>
+        <ion-select [(ngModel)]="ipen_selected">
+          <ion-option *ngFor="let ip of ipen" [value]="ip">{{ip.nama_event}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <div padding-top padding-right padding-left>
+        <button ion-button color="danger" block icon-left (click)="createCode()"><ion-icon name="barcode"></ion-icon>Create Code</button>
+      </div>
+    </div>
+    <div padding-right padding-left>
+        <div padding-right padding-left padding-bottom>
+        <button ion-button block outline icon-left (click)="scanCode()" color="secondary"><ion-icon name="qr-scanner"></ion-icon>Scan Code</button>
+      </div>
+    </div>
+    <ion-card *ngIf="createdCode">
+      <ngx-qrcode [qrc-value]="createdCode"></ngx-qrcode>
+      <ion-card-content>
+        <p>Value: {{ createdCode }}</p>
+      </ion-card-content>
+    </ion-card>
+    
+    <ion-card *ngIf="scannedCode">
+      <ion-card-content>
+        Result from Scan: {{ scannedCode }}
+      </ion-card-content>
+    </ion-card>
+  </ion-item>
+  </div>
+</ion-content>
