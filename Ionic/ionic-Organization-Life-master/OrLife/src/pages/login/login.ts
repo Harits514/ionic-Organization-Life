@@ -11,30 +11,48 @@ import { TabsPage } from '../tabs/tabs';
 export class LoginPage {
   @ViewChild(Slides) slides: Slides;
   ay = null;
-  ipen=null;
+  org=null;
   id=null;
   namalengkap=null;
   username=null;
   NIM=null;
-  organisasi=null;
   kabinet=null;
   divisi=null;
   jabatan=null;
   email=null;
-  password=null
+  password=null;
+  org_selected=null;
+  kabinet_selected=null;
+  divisi_selected=null;
 
   constructor(public navCtrl: NavController, public apiProvider: ApiProvider, public navParams: NavParams, public toastCtrl: ToastController) {
     this.id="1"
     this.namalengkap=""
     this.username=""
     this.NIM=""
-    this.organisasi=""
-    this.kabinet=""
-    this.divisi=""
     this.jabatan=""
     this.email=null
     this.password=null
     console.log(this.slides);
+
+    this.apiProvider.getOrganizations()
+    .then(data => {
+      this.org = data.body;
+      for(let i = 0; i < this.org.length; i++ ){
+        this.org[i].showDetails=false;
+      }
+    });
+
+    this.apiProvider.getKabinet(1)
+    .then(data => {
+      this.kabinet = data.body;
+    });
+
+    this.apiProvider.getDivisi(1)
+    .then(data => {
+      this.divisi = data.body;
+    });
+
   }
 
 
@@ -64,7 +82,7 @@ export class LoginPage {
   }
 
   signUp():void {
-    this.apiProvider.postSignup(this.id, this.namalengkap, this.NIM, this.organisasi, this.kabinet, this.divisi, this.jabatan, this.email, this.password)
+    this.apiProvider.postSignup(this.id, this.namalengkap, this.NIM, this.org_selected.id_organization , this.kabinet_selected.id_cabinet, this.divisi.id_division, this.jabatan, this.email, this.password)
     .then(data => {
       console.log(data.status);
       this.status=data.status;
@@ -82,11 +100,11 @@ export class LoginPage {
       duration: 3000,
       position: 'top'
     });
-  
+
     toast.onDidDismiss(() => {
       console.log('Dismissed toast');
     });
-  
+
     toast.present();
   }
 }

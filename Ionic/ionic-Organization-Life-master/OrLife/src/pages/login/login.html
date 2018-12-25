@@ -20,7 +20,7 @@
       <br/>
       <button ion-button color="light" block outline (click)="goToSlide2()">Lupa Password?</button>
     </ion-slide>
-    
+
     <ion-slide padding style="overflow:auto;">
       <br>
       <br>
@@ -33,34 +33,20 @@
         </ion-item>
         <ion-item>
           <ion-label>Organisasi</ion-label>
-          <ion-select text-center [(ngModel)]="organisasi" placeholder="Organisasi">
-            <ion-option value="1">Himalkom</ion-option>
-            <ion-option value="2">Himalaya</ion-option>
-            <ion-option value="3">HimaHime</ion-option>
-            <ion-option value="4">HimApatis</ion-option>
-            <ion-option value="5">HimAktivis</ion-option>
+          <ion-select text-center [(ngModel)]="org_selected">
+            <ion-option *ngFor="let ip of org" [value]="ip">{{ip.nama_organization}}</ion-option>
           </ion-select>
         </ion-item>
         <ion-item>
           <ion-label>Kabinet</ion-label>
-          <ion-select text-center [(ngModel)]="kabinet" placeholder="Kabinet">
-            <ion-option value="1">Wiki</ion-option>
-            <ion-option value="2">Pedia</ion-option>
-            <ion-option value="3">Onion</ion-option>
-            <ion-option value="4">Fox</ion-option>
-            <ion-option value="5">Chrome</ion-option>
+          <ion-select text-center [(ngModel)]="kabinet_selected">
+            <ion-option *ngFor="let ip of kabinet" [value]="ip">{{ip.nama_cabinet}}</ion-option>
           </ion-select>
         </ion-item>
         <ion-item>
           <ion-label>Divisi</ion-label>
-          <ion-select padding-none text-center [(ngModel)]="divisi" placeholder="Divisi">
-            <ion-option value="1">Badan Pengurus Harian</ion-option>
-            <ion-option value="2">Edukasi</ion-option>
-            <ion-option value="3">Human Resource Development</ion-option>
-            <ion-option value="4">Komunikasi dan Informasi</ion-option>
-            <ion-option value="5">Eksternal</ion-option>
-            <ion-option value="5">Penanggung Jawab Komunitas</ion-option>
-            <ion-option value="5">Badan Pengawas</ion-option>
+          <ion-select padding-none text-center [(ngModel)]="divisi_selected">
+            <ion-option *ngFor="let ip of divisi" [value]="ip">{{ip.nama_division}}</ion-option>
           </ion-select>
         </ion-item>
         <ion-item>

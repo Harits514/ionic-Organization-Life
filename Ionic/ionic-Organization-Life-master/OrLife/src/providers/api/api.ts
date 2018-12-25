@@ -68,7 +68,48 @@ export class ApiProvider {
     });
   });
 }
-  
+
+getOrganizations() {
+  return new Promise(resolve => {this.http.get(this.link+'/api/organizations', {
+  observe: 'response'
+})
+  .subscribe(data => {
+    console.log(data.status);
+    resolve(data);
+  }, err => {
+    console.log(err);
+  });
+});
+}
+
+getKabinet(id_organisasi) {
+  console.log(this.link+'/api/getKabinet/'+id_organisasi);
+    return new Promise(resolve => {this.http.get(this.link+'/api/getKabinet/'+id_organisasi, {
+      observe: 'response'
+   })
+   .subscribe(data => {
+     console.log(data.status);
+     resolve(data);
+    }, err => {
+      console.log(err);
+    });
+  });
+}
+
+getDivisi(id_kabinet) {
+  console.log(this.link+'/api/getDivisi/'+id_kabinet);
+    return new Promise(resolve => {this.http.get(this.link+'/api/getDivisi/'+id_kabinet, {
+      observe: 'response'
+   })
+   .subscribe(data => {
+     console.log(data.status);
+     resolve(data);
+    }, err => {
+      console.log(err);
+    });
+  });
+}
+
   getEventHistory(id_user) {
     console.log(this.link+'/api/userEventHistory/'+id_user);
       return new Promise(resolve => {this.http.get(this.link+'/api/userEventHistory/'+id_user, {
