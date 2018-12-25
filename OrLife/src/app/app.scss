@@ -1,5 +1,6 @@
 // http://ionicframework.com/docs/theming/
-
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+$font-family-base: "Montserrat-Regular", "Montserrat" !default;
 
 // App Global Sass
 // --------------------------------------------------
@@ -14,3 +15,15 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.background
+{
+    background-color: gainsboro;
+}
+
+.title
+{
+    text-align: center;
+}
+
+::-webkit-scrollbar, *::-webkit-scrollbar { display: none; }

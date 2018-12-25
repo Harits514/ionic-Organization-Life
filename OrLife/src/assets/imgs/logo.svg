@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 761 497">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: rgba(230,13,13,0.78);
+      }
+
+      .cls-1, .cls-2 {
+        font-size: 250px;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        font-family: Montserrat-Regular, Montserrat;
+      }
+
+      .cls-2 {
+        fill: #474747;
+      }
+
+      .cls-3 {
+        fill: rgba(0,0,0,0.78);
+      }
+
+      .cls-3, .cls-4 {
+        font-size: 100px;
+      }
+
+      .cls-4 {
+        fill: #ec4343;
+      }
+    </style>
+  </defs>
+  <g id="Group_6" data-name="Group 6" transform="translate(-250 -235)">
+    <text id="O" class="cls-1" transform="translate(250 477)"><tspan x="0" y="0">O</tspan></text>
+    <text id="L" class="cls-2" transform="translate(351 669)"><tspan x="0" y="0">L</tspan></text>
+    <text id="rganization" class="cls-3" transform="translate(452 463)"><tspan x="0" y="0">rganization</tspan></text>
+    <text id="ife" class="cls-4" transform="translate(482 670)"><tspan x="0" y="0">ife</tspan></text>
+  </g>
+</svg>

@@ -1,33 +1,100 @@
-<ion-header>
+<ion-content padding class="loginbackground" has-bouncing="false" padding="true" has-tabs="true" has-header="true" style="overflow: hidden;">
+  <img padding alt="logo" width="auto" height="auto" src="../assets/imgs/logo.svg">
+  <ion-slides padding pager>
+    <ion-slide padding style="overflow:auto;">
+      <br/>
+      <br/>
+      <ion-list>
+        <ion-item class="login-input">
+          <ion-input text-center type="text" [(ngModel)]="email" placeholder="Email"></ion-input>
+        </ion-item>
+        <br>
+        <ion-item class="login-input">
+          <ion-input text-center type="password" [(ngModel)]="password" placeholder="Password"></ion-input>
+        </ion-item>
+      </ion-list>
+      <hr/>
+      <button ion-button color="danger" block (click)="logIn()">Log In</button>
+      <br/>
+      <button ion-button color="light" block outline (click)="goToSlide1()">Sign Up</button>
+      <br/>
+      <button ion-button color="light" block outline (click)="goToSlide2()">Lupa Password?</button>
+    </ion-slide>
+    
+    <ion-slide padding style="overflow:auto;">
+      <br>
+      <br>
+      <ion-list class="login-input">
+        <ion-item>
+          <ion-input text-center type="text" [(ngModel)]="namalengkap" placeholder="Nama Lengkap"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input text-center type="text" [(ngModel)]="NIM" placeholder="NIM"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Organisasi</ion-label>
+          <ion-select text-center [(ngModel)]="organisasi" placeholder="Organisasi">
+            <ion-option value="1">Himalkom</ion-option>
+            <ion-option value="2">Himalaya</ion-option>
+            <ion-option value="3">HimaHime</ion-option>
+            <ion-option value="4">HimApatis</ion-option>
+            <ion-option value="5">HimAktivis</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Kabinet</ion-label>
+          <ion-select text-center [(ngModel)]="kabinet" placeholder="Kabinet">
+            <ion-option value="1">Wiki</ion-option>
+            <ion-option value="2">Pedia</ion-option>
+            <ion-option value="3">Onion</ion-option>
+            <ion-option value="4">Fox</ion-option>
+            <ion-option value="5">Chrome</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Divisi</ion-label>
+          <ion-select padding-none text-center [(ngModel)]="divisi" placeholder="Divisi">
+            <ion-option value="1">Badan Pengurus Harian</ion-option>
+            <ion-option value="2">Edukasi</ion-option>
+            <ion-option value="3">Human Resource Development</ion-option>
+            <ion-option value="4">Komunikasi dan Informasi</ion-option>
+            <ion-option value="5">Eksternal</ion-option>
+            <ion-option value="5">Penanggung Jawab Komunitas</ion-option>
+            <ion-option value="5">Badan Pengawas</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-input text-center type="text" [(ngModel)]="jabatan" placeholder="Jabatan"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input text-center type="text" [(ngModel)]="email" placeholder="Email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input text-center type="password" [(ngModel)]="password" placeholder="Password"></ion-input>
+        </ion-item>
+      </ion-list>
+      <hr>
+      <button ion-button color="danger" block (click)="signUp()">Sign Up</button>
+      <br/>
+      <button ion-button color="light" block outline (click)="goToSlide0()">Log In</button>
+      <br/>
+      <button ion-button color="light" block outline (click)="goToSlide2()">Reset Password</button>
+    </ion-slide>
 
-  <ion-navbar color="danger" text-center>
-    <ion-title>Log In</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
-  <ion-list>
-
-    <ion-item>
-      <ion-label floating>Email</ion-label>
-      <ion-input type="text" [(ngModel)]="email"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label floating>Password</ion-label>
-      <ion-input type="password" [(ngModel)]="password"></ion-input>
-    </ion-item>
-
-  </ion-list>
-
-  <button ion-button block (click)="goToHome()">Log In</button>
-  <br/>
-  <hr>
-  <br/>
-  <button ion-button block outline (click)="goToSignUp()">Sign Up</button>
-  <br/>
-  <button ion-button block outline (click)="goToHome()">Lupa Password?</button>
-  
+    <ion-slide padding style="overflow:auto;">
+      <br/>
+      <br/>
+      <ion-list>
+        <ion-item class="login-input">
+          <ion-input text-center type="email" [(ngModel)]="email" placeholder="Email"></ion-input>
+        </ion-item>
+      </ion-list>
+      <hr>
+      <button ion-button color="danger" block (click)="presentToast()">Send Confirmation Email</button>
+      <br/>
+      <button ion-button color="light" block outline (click)="goToSlide0()">Log In</button>
+      <br/>
+      <button ion-button color="light" block outline (click)="goToSlide1()">Sign Up</button>
+    </ion-slide>
+  </ion-slides>
 </ion-content>

@@ -1,18 +1,19 @@
 <ion-header>
-  <ion-navbar color="danger" hide-on-scroll="true">
+  <ion-navbar color="danger">
     <div *ngIf="admin;then content else other_content"></div>
     <ng-template #content>
       <ion-title>
-        Home (Admin)
+        Reward List (Admin)
       </ion-title>
     </ng-template>
     <ng-template #other_content>
       <ion-title>
-        Home
+        Reward List
       </ion-title>
     </ng-template>
   </ion-navbar>
 </ion-header>
+
 
 <ion-content class="background">
   <div *ngIf="ipen" padding>
@@ -20,24 +21,20 @@
       <ion-card>
         <ion-card-content>
           <ion-card-title>
-            {{ip.nama_event}}
+            {{ip.nama_reward}}
           </ion-card-title>
-          <pre>Lokasi   : {{ip.tempat}}</pre>
-          <pre>Dimulai  : {{ip.time_start}}</pre>
-          <pre>Berakhir : {{ip.time_finish}}</pre>
+          <pre>Poin Harga : {{ip.points_reward}}</pre>
+          <pre>Persediaan : {{ip.quantity_reward}}</pre>
+          <pre>Deskripsi  :</pre>
+          <br/>
+          {{ip.deskripsi_reward}}
           <hr/>
         </ion-card-content>
         <div padding-right padding-left padding-bottom> 
-          <button ion-button block color="danger" icon-start (click)="toggleDetails(ip)">
-          Detail Event<pre> </pre>
-          <ion-icon name="arrow-forward"></ion-icon>
-        </button>
-      </div>
-        <div *ngIf="ip.showDetails">
-          <ion-row>
-            Detail: {{ip.deskripsi_event}}
-            <br>
-          </ion-row>
+            <button ion-button block color="secondary" icon-start>
+              Redeem<pre> </pre>
+              <ion-icon name="arrow-forward"></ion-icon>
+            </button>
         </div>
       </ion-card>
     </div>

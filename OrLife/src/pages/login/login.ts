@@ -1,14 +1,7 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ApiProvider } from './../../providers/api/api';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, Slides, Content, Toast, ToastController } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
-import { SignupPage } from '../signup/signup';
-
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -16,25 +9,84 @@ import { SignupPage } from '../signup/signup';
   templateUrl: 'login.html',
 })
 export class LoginPage {
+  @ViewChild(Slides) slides: Slides;
+  ay = null;
+  ipen=null;
+  id=null;
+  namalengkap=null;
+  username=null;
+  NIM=null;
+  organisasi=null;
+  kabinet=null;
+  divisi=null;
+  jabatan=null;
+  email=null;
+  password=null
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public apiProvider: ApiProvider, public navParams: NavParams, public toastCtrl: ToastController) {
+    this.id="1"
+    this.namalengkap=""
+    this.username=""
+    this.NIM=""
+    this.organisasi=""
+    this.kabinet=""
+    this.divisi=""
+    this.jabatan=""
+    this.email=null
+    this.password=null
+    console.log(this.slides);
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+
+  goToSlide0() {
+    this.slides.slideTo(0, 500);
   }
 
-  goToSignUp():void {
-    this.navCtrl.push('SignupPage');
+  goToSlide1() {
+    this.slides.slideTo(1, 500);
   }
 
-  goToResetPassword():void {
-    this.navCtrl.push('ResetPasswordPage');
+  goToSlide2() {
+    this.slides.slideTo(2, 500);
   }
 
-  goToHome():void {
-    this.navCtrl.push(TabsPage);
-    this.navCtrl.setRoot(TabsPage);
+  logIn():void {
+    this.apiProvider.postLogin(this.email, this.password)
+    .then(data => {
+      console.log(data.status);
+      this.status=data.status;
+      this.apiProvider.storage.set("loginData", data.body)
+      .then(() => {
+        this.navCtrl.push(TabsPage);
+        this.navCtrl.setRoot(TabsPage);
+      });
+    });
   }
 
+  signUp():void {
+    this.apiProvider.postSignup(this.id, this.namalengkap, this.NIM, this.organisasi, this.kabinet, this.divisi, this.jabatan, this.email, this.password)
+    .then(data => {
+      console.log(data.status);
+      this.status=data.status;
+      this.apiProvider.storage.set("loginData", data.body)
+      .then(() => {
+        this.navCtrl.push(TabsPage);
+        this.navCtrl.setRoot(TabsPage);
+      });
+    });
+  }
+
+  presentToast() {
+    let toast = this.toastCtrl.create({
+      message: 'Email konfirmasi telah dikirim!',
+      duration: 3000,
+      position: 'top'
+    });
+  
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+  
+    toast.present();
+  }
 }

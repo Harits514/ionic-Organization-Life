@@ -1,3 +1,48 @@
-page-login {
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
 
+page-login {
+    .logoHeader {
+      text-align: center !important;
+      margin-top: 10% !important;
+      font-family: "Montserrat-Regular", "Montserrat";
+      src: href('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+    }
+
+    .loginbackground
+    {
+        background: url('../../assets/imgs/backgroundimg.png') no-repeat fixed center;
+        background-size: cover;
+    }
+
+    .login-input
+    {
+        opacity:0.777;
+        background-color: white;
+        text-align: center;
+        -webkit-border-radius: 66px;
+        -moz-border-radius: 66px;
+        border-radius: 66px;
+    }
+
+    .select{
+        max-width: 100% !important;
+    }
+
+    .button
+    {
+        text-align: center;
+        -webkit-border-radius: 66px;
+        -moz-border-radius: 66px;
+        border-radius: 66px;
+    }
+
+    ion-slide.swiper-slide {
+        align-items: flex-start;
+    }
+
+    div.swiper-pagination {
+        top:0px;
+        bottom:inherit;
+    }
 }
+  
