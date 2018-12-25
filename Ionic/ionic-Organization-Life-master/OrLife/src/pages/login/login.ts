@@ -35,6 +35,15 @@ export class LoginPage {
     this.password=null
     console.log(this.slides);
 
+    this.apiProvider.getData('loginData')
+    .then(data => {
+      if(data){
+        console.log(data);
+        this.navCtrl.push(TabsPage);
+        this.navCtrl.setRoot(TabsPage);
+      }
+    });
+
     this.apiProvider.getOrganizations()
     .then(data => {
       this.org = data.body;

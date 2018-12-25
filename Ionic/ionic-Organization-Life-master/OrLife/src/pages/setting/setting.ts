@@ -1,4 +1,5 @@
 import { EventhistoryPage } from './../eventhistory/eventhistory';
+import { LoginPage } from './../login/login';
 import { ApiProvider } from './../../providers/api/api';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -26,8 +27,15 @@ export class SettingPage {
       else{this.admin=0;}
     })
   }
-  
+
   goToEventHistoryPage():void {
     this.navCtrl.push(EventhistoryPage);
+  }
+
+  LogOut():void{
+    this.apiProvider.removeData('loginData')
+    .then(() => {
+      this.navCtrl.push(LoginPage);
+    })
   }
 }

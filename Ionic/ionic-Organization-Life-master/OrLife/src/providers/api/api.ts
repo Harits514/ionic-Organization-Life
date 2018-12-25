@@ -48,7 +48,7 @@ export class ApiProvider {
       observe: 'response'
    })
       .subscribe(data => {
-        console.log(data.status);
+        console.log("events",data.status);
         resolve(data);
       }, err => {
         console.log(err);
@@ -61,7 +61,7 @@ export class ApiProvider {
     observe: 'response'
  })
     .subscribe(data => {
-      console.log(data.status);
+      console.log("rewards",data.status);
       resolve(data);
     }, err => {
       console.log(err);
@@ -74,7 +74,7 @@ getOrganizations() {
   observe: 'response'
 })
   .subscribe(data => {
-    console.log(data.status);
+    console.log("organizations",data.status);
     resolve(data);
   }, err => {
     console.log(err);
@@ -88,7 +88,7 @@ getKabinet(id_organisasi) {
       observe: 'response'
    })
    .subscribe(data => {
-     console.log(data.status);
+     console.log("kabinet",data.status);
      resolve(data);
     }, err => {
       console.log(err);
@@ -102,7 +102,7 @@ getDivisi(id_kabinet) {
       observe: 'response'
    })
    .subscribe(data => {
-     console.log(data.status);
+     console.log("divisi",data.status);
      resolve(data);
     }, err => {
       console.log(err);
@@ -200,6 +200,10 @@ getDivisi(id_kabinet) {
 
   getData(key){
     return this.storage.get(key);
+  }
+
+  removeData(key){
+    return this.storage.remove(key);
   }
 
 }
