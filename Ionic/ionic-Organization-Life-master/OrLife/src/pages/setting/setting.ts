@@ -37,13 +37,8 @@ export class SettingPage {
   LogOut():void{
     this.apiProvider.removeData('loginData')
     .then(() => {
-<<<<<<< HEAD
       this.navCtrl.push(LoginPage);
        window.location.reload();
-=======
-      this.navCtrl.setRoot("LoginPage");
-      location.reload();
->>>>>>> 7af7f77fef6b45762869138266db9148c5337988
     })
   }
 }
