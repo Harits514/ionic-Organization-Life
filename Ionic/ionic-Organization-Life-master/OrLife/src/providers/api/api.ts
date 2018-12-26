@@ -84,7 +84,7 @@ getOrganizations() {
 
 getKabinet(id_organisasi) {
   console.log(this.link+'/api/getKabinet/'+id_organisasi);
-    return new Promise(resolve => {this.http.get(this.link+'/api/getKabinet/'+id_organisasi, {
+    return new Promise(resolve => {this.http.get(this.link+'/api/cabinets/', {
       observe: 'response'
    })
    .subscribe(data => {
@@ -98,7 +98,7 @@ getKabinet(id_organisasi) {
 
 getDivisi(id_kabinet) {
   console.log(this.link+'/api/getDivisi/'+id_kabinet);
-    return new Promise(resolve => {this.http.get(this.link+'/api/getDivisi/'+id_kabinet, {
+    return new Promise(resolve => {this.http.get(this.link+'/api/divisions/', {
       observe: 'response'
    })
    .subscribe(data => {
