@@ -20,7 +20,7 @@ export class ApiProvider {
   constructor(public http: HttpClient, public storage: Storage, public toastCtrl: ToastController) {
     console.log('Hello ApiProvider Provider');
     this.link="http://localhost:8000";
-    /*http://192.168.43.169:8000*/
+    /*http://192.168.43.169:8000, http://localhost:8000*/
   }
 
   getFilms() {
@@ -115,6 +115,20 @@ getDivisi(id_kabinet) {
   getEventHistory(id_user) {
     console.log(this.link+'/api/userEventHistory/'+id_user);
       return new Promise(resolve => {this.http.get(this.link+'/api/userEventHistory/'+id_user, {
+        observe: 'response'
+     })
+     .subscribe(data => {
+       console.log(data.status);
+       resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  getRewardHistory(id_user) {
+    console.log(this.link+'/api/userRewardHistory/'+id_user);
+      return new Promise(resolve => {this.http.get(this.link+'/api/userRewardHistory/'+id_user, {
         observe: 'response'
      })
      .subscribe(data => {

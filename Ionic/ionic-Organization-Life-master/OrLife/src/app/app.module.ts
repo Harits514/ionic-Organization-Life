@@ -11,6 +11,7 @@ import { RewardPage } from './../pages/reward/reward';
 import { LoginPage } from '../pages/login/login';
 import { SettingPage } from '../pages/setting/setting';
 import { EventhistoryPage } from '../pages/eventhistory/eventhistory';
+import { RewardhistoryPage } from '../pages/rewardhistory/rewardhistory';
 
 import { TabsPage } from '../pages/tabs/tabs';
 
@@ -31,7 +32,8 @@ import { ApiProvider } from '../providers/api/api';
     TabsPage,
     LoginPage,
     SettingPage,
-    EventhistoryPage
+    EventhistoryPage,
+    RewardhistoryPage
   ],
   imports: [
     BrowserModule,
@@ -51,7 +53,8 @@ import { ApiProvider } from '../providers/api/api';
     TabsPage,
     LoginPage,
     SettingPage,
-    EventhistoryPage
+    EventhistoryPage,
+    RewardhistoryPage
   ],
   providers: [
     StatusBar,

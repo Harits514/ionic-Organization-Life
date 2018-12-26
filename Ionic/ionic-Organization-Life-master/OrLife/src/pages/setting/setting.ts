@@ -1,6 +1,7 @@
 import { AppModule } from './../../app/app.module';
 import { TabsPage } from './../tabs/tabs';
 import { EventhistoryPage } from './../eventhistory/eventhistory';
+import { RewardhistoryPage } from './../rewardhistory/rewardhistory';
 import { LoginPage } from './../login/login';
 import { ApiProvider } from './../../providers/api/api';
 import { Component } from '@angular/core';
@@ -32,6 +33,10 @@ export class SettingPage {
 
   goToEventHistoryPage():void {
     this.navCtrl.push(EventhistoryPage);
+  }
+
+  goToRewardHistoryPage():void {
+    this.navCtrl.push(RewardhistoryPage);
   }
 
   LogOut():void{
