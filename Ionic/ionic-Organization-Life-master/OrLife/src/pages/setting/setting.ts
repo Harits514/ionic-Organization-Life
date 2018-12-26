@@ -36,6 +36,7 @@ export class SettingPage {
     this.apiProvider.removeData('loginData')
     .then(() => {
       this.navCtrl.push(LoginPage);
+       window.location.reload();
     })
   }
 }

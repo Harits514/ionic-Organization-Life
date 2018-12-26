@@ -33,8 +33,10 @@ export class ApiProvider {
     });
   }
 
-  getLogin() {
-      return new Promise(resolve => {this.http.get('https://swapi.co/api/people/1')
+  getLogin(id) {
+      return new Promise(resolve => {this.http.get(this.link+'/api/user/'+id,{
+          observe: 'response'
+      })
       .subscribe(data => {
         resolve(data);
       }, err => {
@@ -120,6 +122,33 @@ getDivisi(id_kabinet) {
        resolve(data);
       }, err => {
         console.log(err);
+      });
+    });
+  }
+
+  postReward(id_user, id_reward){
+    var myData = {
+      id_user: id_user,
+      id_reward: id_reward
+    };
+    return new Promise(resolve => {this.http.post(this.link+"/api/reedemReward", myData, {
+        headers: new HttpHeaders()
+            .set('Content-Type', 'application/json'),
+        observe: 'response'
+    })
+      .subscribe(data => {
+        console.log(data.body);
+        resolve(data);
+       }, error => {
+        let toast = this.toastCtrl.create({
+          message: 'Transaksi gagal.',
+          duration: 3000,
+          position: 'top'
+        });
+        toast.onDidDismiss(() => {
+          console.log('Dismissed toast');
+        });
+        toast.present();
       });
     });
   }

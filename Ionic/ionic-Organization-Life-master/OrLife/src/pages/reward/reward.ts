@@ -1,6 +1,6 @@
 import { ApiProvider } from './../../providers/api/api';
 import { Component } from '@angular/core';
-import { NavController, IonicPage } from 'ionic-angular';
+import { NavController, IonicPage, ToastController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -13,7 +13,7 @@ export class RewardPage {
   admin=null;
   rewards=null;
 
-  constructor(public apiProvider: ApiProvider, public navCtrl: NavController) {
+  constructor(public apiProvider: ApiProvider, public navCtrl: NavController, public toastCtrl: ToastController) {
     this.apiProvider.getRewards()
     .then(data => {
       this.rewards = data.body;
@@ -45,8 +45,21 @@ tukarReward(ipen) {
     toast.present();
   } else {
     this.apiProvider.postReward(this.userData.id, ipen.id_reward)
-    .then(data => {
-      console.log(data);
+    .then(() => {
+      this.apiProvider.getLogin(this.userData.id)
+      .then(data => {
+        this.apiProvider.storage.set("loginData", data.body)
+        .then(()=>{
+          window.location.reload();
+          let toast = this.toastCtrl.create({
+            message: 'Permintaan anda akan diproses, terimakasih.',
+            duration: 3000,
+            position: 'top'
+        })
+        toast.present();
+      })
+      });
+
       /*
       this.apiProvider.getLogin(this.userData.id)
       .then(dataL => {
