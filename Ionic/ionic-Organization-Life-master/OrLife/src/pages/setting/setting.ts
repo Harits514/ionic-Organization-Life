@@ -1,3 +1,5 @@
+import { AppModule } from './../../app/app.module';
+import { TabsPage } from './../tabs/tabs';
 import { EventhistoryPage } from './../eventhistory/eventhistory';
 import { LoginPage } from './../login/login';
 import { ApiProvider } from './../../providers/api/api';
@@ -35,7 +37,8 @@ export class SettingPage {
   LogOut():void{
     this.apiProvider.removeData('loginData')
     .then(() => {
-      this.navCtrl.push(LoginPage);
+      this.navCtrl.setRoot("LoginPage");
+      location.reload();
     })
   }
 }
