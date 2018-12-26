@@ -97,7 +97,7 @@ getKabinet(id_organisasi) {
 }
 
 getDivisi(id_kabinet) {
-  console.log(this.link+'/api/getDivisi/'+id_kabinet);
+  console.log(this.link+'/api/divisions/');
     return new Promise(resolve => {this.http.get(this.link+'/api/divisions/', {
       observe: 'response'
    })
