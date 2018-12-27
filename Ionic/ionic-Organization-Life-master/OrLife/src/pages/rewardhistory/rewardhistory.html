@@ -4,36 +4,15 @@
   </ion-navbar>
 </ion-header>
 
-
-<ion-content padding>
+<ion-content class="background">
   <div *ngIf="ipen">
     <div *ngFor="let ip of ipen">
       <ion-card>
         <ion-card-content>
-          <ion-card-title>
-            {{ip.nama_reward}}
-          </ion-card-title>
+          <ion-card-title>{{ip.nama_reward}}</ion-card-title>
+          <hr>
+          <pre wrap>Poin Terpakai  : {{ip.points_reward}}<br>Deskripsi      :<br>{{ip.deskripsi_reward}}</pre>
         </ion-card-content>
-        <ion-row no-padding>
-          <ion-col text-center>
-            <button ion-button clear small color="danger" icon-start (click)="toggleDetails(ip)">
-              Detail Hadiah
-              <ion-icon name="arrow-forward"></ion-icon>
-            </button>
-          </ion-col>
-          <ion-col text-center>
-            <button ion-button clear small color="danger" icon-start>
-              Share
-              <ion-icon name='share-alt'></ion-icon>
-            </button>
-          </ion-col>
-        </ion-row>
-        <div *ngIf="ip.showDetails">
-          <ion-row>
-            Detail: {{ip.deskripsi_reward}}
-            <br>
-          </ion-row>
-        </div>
       </ion-card>
     </div>
   </div>

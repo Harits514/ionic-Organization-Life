@@ -19,26 +19,25 @@
     <div *ngFor="let ip of ipen" padding-bottom>
       <ion-card>
         <ion-card-content>
-          <ion-card-title>
-            {{ip.nama_event}}
-          </ion-card-title>
-          <pre>Lokasi   : {{ip.tempat}}</pre>
-          <pre>Dimulai  : {{ip.time_start}}</pre>
-          <pre>Berakhir : {{ip.time_finish}}</pre>
+          <ion-card-title>{{ip.nama_event}}</ion-card-title>
           <hr/>
+          <pre wrap>Lokasi   : {{ip.tempat}}<br>Dimulai  : {{ip.time_start}}<br>Berakhir : {{ip.time_finish}}</pre>
+          <hr/>
+          <div *ngIf="ip.showDetails==false" padding-bottom>
+            <button ion-button block color="danger" icon-start (click)="toggleDetails(ip)">Detail Event<pre> </pre>
+              <ion-icon name="arrow-forward"></ion-icon>
+            </button>
+          </div>
         </ion-card-content>
-        <div padding-right padding-left padding-bottom> 
-          <button ion-button block color="danger" icon-start (click)="toggleDetails(ip)">
-          Detail Event<pre> </pre>
-          <ion-icon name="arrow-forward"></ion-icon>
-        </button>
-      </div>
-        <div *ngIf="ip.showDetails">
-          <ion-row>
-            Detail: {{ip.deskripsi_event}}
-            <br>
-          </ion-row>
-        </div>
+          <div *ngIf="ip.showDetails" padding-right padding-left padding-bottom>
+            <ion-row>
+              <pre wrap>Deskripsi :<br>{{ip.deskripsi_event}}</pre>
+              <br>
+            </ion-row>
+            <ion-row>
+              <button ion-button block outline color="primary" icon-start (click)="toggleDetails(ip)">Tutup</button>
+            </ion-row>
+          </div>
       </ion-card>
     </div>
   </div>

@@ -20,13 +20,9 @@
     <div *ngFor="let ip of rewards" padding-bottom>
       <ion-card>
         <ion-card-content>
-          <ion-card-title>
-            {{ip.nama_reward}}
-          </ion-card-title>
-          <pre>Poin Harga : {{ip.points_reward}}</pre>
-          <pre>Persediaan : {{ip.quantity_reward}}</pre>
-          <pre>Deskripsi  :</pre>
-          <br/> {{ip.deskripsi_reward}}
+          <ion-card-title>{{ip.nama_reward}}</ion-card-title>
+          <hr/>
+          <pre wrap>Poin Harga : {{ip.points_reward}}<br>Persediaan : {{ip.quantity_reward}}<br>Deskripsi  :<br>{{ip.deskripsi_reward}}</pre>
           <hr/>
         </ion-card-content>
         <div padding-right padding-left padding-bottom>
